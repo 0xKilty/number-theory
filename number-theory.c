@@ -44,16 +44,30 @@ int mod_exp(int base, int power, int mod) {
         if ((power >> i) & 1) {
             res = (res * temp) % mod;
         }
-        printf("%d %d\n", temp, i);
         temp = (temp * temp) % mod;
     }
     return res;
 }
 
+int get_order(int num, int mod) {
+    for (int i = 1; i < mod - 1; i++) {
+        if (mod_exp(num, i, mod) == 1) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int discrete_log_problem(int num, int find, int mod) {
+    for (int i = 1; i < mod - 1; i++) {
+        
+    }
+}
+
 int main(int argc, char** argv) {
     clock_t start_time = clock();
 
-    printf("%d\n", mod_exp(3, 15791304, 89));
+    printf("%d\n", get_order(16, 10935));
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
 
