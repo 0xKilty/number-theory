@@ -4,6 +4,11 @@ body {
     margin: auto;
 }
 
+h1 a {
+    color: black;
+    text-decoration: none;
+}
+
 code a {
     color: black;
     text-decoration: none;
