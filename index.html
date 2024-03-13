@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="/dracula.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Number Theory</title>
+</head>
+
+<body>
+    <h1>Number Theory</h1>
+    <h3>number-theory C open source library</h3>
+    <p>
+        <a href="./index.html">Home</a>
+        <a href="./examples">Examples</a>
+        <a href="https://github.com/0xKilty/number-theory">Source code</a>
+    </p>
+    <p>This is a library full of number theory functions.</p>
+
+    <h3>Common functions</h3>
+    <h3><code>int gcd(int a, int b)</code></h3>
+    <p>Generates the greatest common divisor between two numbers.</p>
+    <p>\( \gcd(a, b) \)</p>
+
+    <h3>Modulo operations</h3>
+    <h3><code><a href="https://github.com/0xKilty/number-theory/blob/main/number-theory.c#L40">int mod_exp(int base, int power, int mod)</a></code></h3>
+    <p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
+        exponentiate a number modulus.</p>
+    <p>\( a^x \equiv y \mod m \)</p>
+    <pre>
+        <code class="language-c">
+            int mod_exp(int base, int power, int mod) {
+                int temp = base;
+                int res = 1;
+                for (int i = 0; i < 32 - __builtin_clz(power); i++) {
+                    if ((power >> i) & 1)
+                        res = (res * temp) % mod;
+                    temp = (temp * temp) % mod;
+                }
+                return res;
+            }
+        </code>
+    </pre>
+</body>
+
+</html>

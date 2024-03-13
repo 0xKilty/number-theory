@@ -19,7 +19,7 @@ int is_prime(int n) {
     return 1; 
 }
 
-int gcd(int a, int b){
+int gcd(int a, int b) {
     int temp;
     while (b != 0) {
         temp = a % b;
@@ -41,9 +41,8 @@ int mod_exp(int base, int power, int mod) {
     int temp = base;
     int res = 1;
     for (int i = 0; i < 32 - __builtin_clz(power); i++) {
-        if ((power >> i) & 1) {
+        if ((power >> i) & 1)
             res = (res * temp) % mod;
-        }
         temp = (temp * temp) % mod;
     }
     return res;
