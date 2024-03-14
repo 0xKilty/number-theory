@@ -1,7 +1,7 @@
 import git
 import re
 
-def get_functions_data_from_file(file):
+def get_function_data_from_file(file):
     pattern = r'(?P<name>\b(?:int|void|char|float|double)\s+(\w+)\s*\([^)]*\)\s*{)'
     matches = re.finditer(pattern, file)
     function_info = []
@@ -22,7 +22,7 @@ def main():
         if blob.type == 'blob':
             if blob.path.split(".")[-1] == "c":
                 file = repo.git.show(f"{default_branch}:{blob.path}")
-                function_info = get_functions_data_from_file(file)
+                function_info = get_function_data_from_file(file)
                 for i in function_info:
                     print(i)
 

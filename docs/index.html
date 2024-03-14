@@ -6,37 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="/dracula.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <link rel="stylesheet" href="dracula.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
     <title>Number Theory</title>
 </head>
 
 <body>
-    <h1><a href="./index.html">Number Theory</a></h1>
-    <h3>number-theory C open source library</h3>
-    <p>
+    <h1><a href="./index.html">\( (n, t) \) Number Theory</a></h1>
+    <div class="nav">
         <a href="./examples">Examples</a>
-        <a href="https://github.com/0xKilty/number-theory">Source code</a>
-    </p>
+        <a href="./dir">Docs</a>
+        <a href="./contribute">Contribute</a>
+        <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
+        <a onclick="toggle_color()">Dark</a>
+    </div>
+    <h3>number-theory C open source library</h3>
     <p>
         number-theory is an open source library designed to provide mathematical 
         and programming examples of functions in number theory.
     </p>
-
     <h3>Common functions</h3>
     <h3><code>int gcd(int a, int b)</code></h3>
     <p>Generates the greatest common divisor between two numbers.</p>
     <p>\( \gcd(a, b) \)</p>
 
     <h3>Modulo operations</h3>
-    <h3><code><a href="https://github.com/0xKilty/number-theory/blob/main/number-theory.c#L40" target="_blank">int mod_exp(int base, int power, int mod)</a></code>
+
+    <h4 id="mod_exp">Modular exponentiation</h4>
+    <h3>
+        <div class="sig">
+            <code>
+                <a href="https://github.com/0xKilty/number-theory/blob/main/number-theory.c#L40" target="_blank">
+                    int mod_exp(int base, int power, int mod)
+                </a>
+            </code>
+            <a class="hash" href="#mod_exp">#</a>
+        </div>
     </h3>
     <p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-        exponentiate a number modulus.</p>
+        exponentiate a number modulus.</p> 
     <p>\( a^b \equiv x \mod m \)</p>
+
     <pre>
         <code class="language-c">
             int mod_exp(int base, int power, int mod) {
