@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <h1><a href="./index.html">\( (n, t) \) Number Theory</a></h1>
+    <h1><a href="/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
         <a href="./examples">Examples</a>
         <a href="./dir">Docs</a>
@@ -33,42 +33,10 @@
         number-theory is an open source library designed to provide mathematical 
         and programming examples of functions in number theory.
     </p>
-    <h3>Common functions</h3>
-    <h3><code>int gcd(int a, int b)</code></h3>
-    <p>Generates the greatest common divisor between two numbers.</p>
-    <p>\( \gcd(a, b) \)</p>
-
-    <h3>Modulo operations</h3>
-
-    <h4 id="mod_exp">Modular exponentiation</h4>
-    <h3>
-        <div class="sig">
-            <code>
-                <a href="https://github.com/0xKilty/number-theory/blob/main/number-theory.c#L40" target="_blank">
-                    int mod_exp(int base, int power, int mod)
-                </a>
-            </code>
-            <a class="hash" href="#mod_exp">#</a>
-        </div>
-    </h3>
-    <p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-        exponentiate a number modulus.</p> 
-    <p>\( a^b \equiv x \mod m \)</p>
-
-    <pre>
-        <code class="language-c">
-            int mod_exp(int base, int power, int mod) {
-                int temp = base;
-                int res = 1;
-                for (int i = 0; i < 32 - __builtin_clz(power); i++) {
-                    if ((power >> i) & 1)
-                        res = (res * temp) % mod;
-                    temp = (temp * temp) % mod;
-                }
-                return res;
-            }
-        </code>
-    </pre>
+    <ul>
+        <li><a href="/common-functions"><strong>Common Functions</strong></a></li>
+        <li><a href="/modulus-operations"><strong>Modulus Operations</strong></a></li>
+    </ul>
 </body>
 
 </html>

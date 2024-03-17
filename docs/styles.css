@@ -16,9 +16,14 @@ p {
 }
 
 h1 a,
+ul a,
 code a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
 }
 
 pre code {
