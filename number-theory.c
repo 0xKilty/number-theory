@@ -1,10 +1,3 @@
-/*
-TODO:
-- Fermats little theorm mod exp
-- Find order function
-- Diffie Hellman brute force
-*/
-
 #include <stdio.h>
 #include <time.h>
 

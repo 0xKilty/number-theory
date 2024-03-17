@@ -1,4 +1,5 @@
 # number-theory
-![GitHub last commit](https://img.shields.io/github/last-commit/0xKilty/number-theory)
+![GitHub last commit](https://img.shields.io/github/last-commit/0xKilty/number-theory) 
+![Website](https://img.shields.io/website?url=https%3A%2F%2F0xkilty.github.io%2Fnumber-theory%2F)
 
-A library of number theory functions written in C. Most of the content is I learn in MATH 360 (Mathematics of Information Security) at CSU is expressed in C code in this repo, removing the proofs of course.
+This is a collection of mathematical functions in number theory in different programming languages. Number theory and computer science go hand in hand and the purpose of this project is to bridge the gap between programming and mathematics.
