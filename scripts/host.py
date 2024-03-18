@@ -25,7 +25,7 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             f.close()
             raise
 
-PORT = 8000
+PORT = 8001
 
 Handler = NoCacheHTTPRequestHandler
 os.chdir("../docs")
