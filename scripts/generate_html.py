@@ -1,30 +1,18 @@
-import git
-import re
+from jinja2 import Template
 
-def get_function_data_from_file(file):
-    pattern = r'(?P<name>\b(?:int|void|char|float|double)\s+(\w+)\s*\([^)]*\)\s*{)'
-    matches = re.finditer(pattern, file)
-    function_info = []
-    for match in matches:
-        function_name = match.group('name')[:-2]
-        start_line = file.count('\n', 0, match.start()) + 1
-        function_info.append((function_name, start_line))
-    return function_info
+with open('../templates/base.html', 'r') as base_template_file:
+    base_template = base_template_file.read()
 
-def main():
-    repo = git.Repo("..")
-    default_branch = "main"
+with open('../templates/index.html', 'r') as index_template_file:
+    index_template = index_template_file.read()
 
-    main_branch = repo.commit(default_branch)
-    tree = main_branch.tree
+base_data = {
+    'content': index_template
+}
 
-    for blob in tree.traverse():
-        if blob.type == 'blob':
-            if blob.path.split(".")[-1] == "c":
-                file = repo.git.show(f"{default_branch}:{blob.path}")
-                function_info = get_function_data_from_file(file)
-                for i in function_info:
-                    print(i)
+template = Template(base_template)
 
-if __name__ == "__main__":
-    main()
+rendered_html = template.render(base_data)
+
+with open('../docs/test.html', 'w') as output_file:
+    output_file.write(rendered_html)
