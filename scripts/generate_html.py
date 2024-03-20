@@ -6,9 +6,7 @@ with open('../templates/base.html', 'r') as base_template_file:
 with open('../templates/index.html', 'r') as index_template_file:
     index_template = index_template_file.read()
 
-base_data = {
-    'content': index_template
-}
+base_data = {'content': index_template}
 
 template = Template(base_template)
 
