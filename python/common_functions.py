@@ -29,3 +29,4 @@ def is_prime(n: int) -> bool:
 
 def is_coprime(a: int, b: int) -> bool:
     return gcd(a, b) == 1
+
