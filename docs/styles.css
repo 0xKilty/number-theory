@@ -57,3 +57,7 @@ pre code {
 .badges img {
     padding-right: 15px;
 }
+
+.sagecell .CodeMirror {
+    height: 300px !important;
+}

@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import os
 
-PORT = 8002
+PORT = 8003
 
 Handler = http.server.SimpleHTTPRequestHandler
 os.chdir("../docs")
