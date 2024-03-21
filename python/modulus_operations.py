@@ -12,7 +12,7 @@ def mod_exp(a: int, b: int, m: int) -> int:
 
 
 def mod_inverse(a: int, m: int) -> int:
-    gcd, x, y = extended_euclidean(a, m)
+    gcd, x, _ = extended_euclidean(a, m)
     if gcd != 1:
         raise ValueError("The modular inverse does not exist.")
     else:
