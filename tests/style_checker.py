@@ -9,5 +9,5 @@ def check_pep8(files):
 if __name__ == "__main__":
     os.chdir('../python')
     for file in os.listdir('.'):
-        check_pep8(file)
-        print(" ")
+        if check_pep8(file) != 0:
+            print("\n", end="")
