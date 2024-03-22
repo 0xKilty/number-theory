@@ -29,7 +29,7 @@ def write_with_template(template: str, output: str):
     with open('../templates/base.html', 'r') as base_template_file:
         base_template = base_template_file.read()
 
-    with open(f'../templates/{template}.html', 'r') as template_file:
+    with open(f'../data/{template}.html', 'r') as template_file:
         index_template = template_file.read()
 
     base_data = {'content': index_template}
@@ -57,7 +57,11 @@ def get_python_function_data(file):
     tree = ast.parse(file)
     for node in tree.body:
         if isinstance(node, ast.FunctionDef):
-            functions.append((node.name, node.lineno))
+            function_name = node.name
+            args = ', '.join(arg.arg + ': ' + ast.unparse(arg.annotation).strip() if arg.annotation else arg.arg for arg in node.args.args)
+            return_annotation = ast.unparse(node.returns).strip() if node.returns else "None"
+            signature = f"{function_name}({args}) -> {return_annotation}"
+            functions.append((function_name, signature, node.lineno))
     return functions
 
 
@@ -74,38 +78,25 @@ def get_github_links():
             if split_path[0] == 'python':
                 file = repo.git.show(f"{default_branch}:{blob.path}")
                 function_info = get_python_function_data(file)
-            elif split_path[0] == 'c':
-                file = repo.git.show(f"{default_branch}:{blob.path}")
-                function_info = get_c_function_data(file)
+                print('\n\n', blob.path)
+                for function in function_info:
+                    print(function)
 
 
 if __name__ == "__main__":
     os.chdir('../build')
+
     clear_dir('.')
+
     copy_files('../assets', '.')
+
     write_with_template('index', 'index')
-    # write the contribute
-    # get the github links
-    get_github_links()
+
+    os.makedirs('contribute')
+    write_with_template('contribute', 'contribute/index')
+
+    github_links = get_github_links()
+    print(github_links)
     # write the categories
     # write the examples
     # write the dir
-    
-
-'''
-with open('../templates/base.html', 'r') as base_template_file:
-    base_template = base_template_file.read()
-
-with open('../templates/index.html', 'r') as template_file:
-    index_template = template_file.read()
-
-base_data = {'content': index_template}
-
-template = Template(base_template)
-
-rendered_html = template.render(base_data)
-
-with open('../docs/test.html', 'w') as output_file:
-    output_file.write(rendered_html)
-'''
-
