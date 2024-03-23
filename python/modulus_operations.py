@@ -12,13 +12,17 @@ def mod_exp(a: int, b: int, m: int) -> int:
 
 
 def mod_inverse(a: int, m: int) -> int:
-    gcd, x, _ = extended_euclidean(a, m)
+    x, _, gcd = extended_euclidean(a, m)
     if gcd != 1:
         raise ValueError("The modular inverse does not exist.")
-    else:
-        return (x % m + m) % m
+    return x % m if x >= 0 else x + m
 
-a = 5
-m = 11
-inverse = mod_inverse(a, m)
-print(f"The modular inverse of {a} modulo {m} is {inverse}")
+def chinese_remainder_theorem(moduli: list[int], remainders: list[int]) -> list[int]:
+    sum = 0
+    prod = 1
+    for n_i in moduli:
+        prod *= n_i
+    for n_i, a_i in zip(moduli, remainders):
+        p = prod // n_i
+        sum += a_i * mod_inverse(p, n_i) * p
+    return sum % prod

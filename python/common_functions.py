@@ -11,7 +11,17 @@ def extended_euclidean(a: int, b: int) -> tuple[int, int, int]:
         a, b = b, a % b
         x_prev, x = x - quotient * x_prev, x_prev
         y_prev, y = y - quotient * y_prev, y_prev
-    return a, x, y
+    return x, y, a
+
+
+def euler_totient(n):
+    if n <= 0:
+        return 0
+    count = 0
+    for i in range(1, n + 1):
+        if gcd(n, i) == 1:
+            count += 1
+    return count
 
 
 def is_prime(n: int) -> bool:
