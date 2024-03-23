@@ -77,6 +77,7 @@ def get_github_links():
         if blob.type == 'blob':
             split_path = blob.path.split('/')
             if split_path[0] == 'python':
+                print(blob.path)
                 file = repo.git.show(f"{default_branch}:{blob.path}")
                 get_python_function_data(file, blob.path, res)
     return res
@@ -94,6 +95,9 @@ if __name__ == "__main__":
     os.makedirs('contribute')
     with open(f'../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
+    soup = BeautifulSoup(contribute_template, 'html.parser')
+    for h4 in soup.find_all('h4'):
+        print(h4['id'])
     write_with_template({'content': contribute_template}, 'contribute/index.html')
 
     github_links = get_github_links()
