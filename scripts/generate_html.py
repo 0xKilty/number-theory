@@ -40,6 +40,7 @@ def write_with_links(template: str, links: dict) -> str:
     with open(f'../data/{template}', 'r') as template_file:
         read_template = template_file.read()
 
+
     template = Template(read_template)
     rendered_html = template.render(links)
 
@@ -110,3 +111,4 @@ if __name__ == "__main__":
         write_with_template({'content': example_text}, f'examples/{example}')
 
     os.makedirs('docs')
+    
