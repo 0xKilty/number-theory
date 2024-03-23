@@ -11,11 +11,7 @@
     <!-- SageMath -->
     <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
     <link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
-    <script>
-        sagecell.makeSagecell({
-            inputLocation: '.sage',
-        });
-    </script>
+    <script>sagecell.makeSagecell({"inputLocation": ".sage"});</script>
 
     <!-- highlight.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
@@ -23,8 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
-    <link rel="stylesheet" href="../styles.css">
-    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js"></script>
 
     <script>past_color()</script>
     <title>Number Theory</title>
@@ -34,16 +30,23 @@
     <h1><a href="/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
         <a href="/examples">Examples</a>
-        <a href="/dir">Docs</a>
+        <a href="/docs">Docs</a>
         <a href="/contribute">Contribute</a>
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
         <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
-    <h3>Fast Powering Algorithm</h3>
-    <p>
-        number-theory is an open source library designed to provide mathematical 
-        and programming examples of functions in number theory.
-    </p>
+    <h3>Modulo operations</h3>
+<h4 id="mod_exp">Modular exponentiation</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/modulus_operations.py#L3" target="_blank">
+            mod_exp(a: int, b: int, m: int) -> int
+        </a>
+    </code>
+</h3>
+<p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
+    exponentiate a number modulus.</p> 
+<p>\( a^b \equiv x \mod m \)</p>
 </body>
 
 </html>

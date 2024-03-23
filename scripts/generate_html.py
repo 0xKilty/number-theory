@@ -77,11 +77,26 @@ def get_github_links():
         if blob.type == 'blob':
             split_path = blob.path.split('/')
             if split_path[0] == 'python':
-                print(blob.path)
                 file = repo.git.show(f"{default_branch}:{blob.path}")
                 get_python_function_data(file, blob.path, res)
     return res
-        
+
+def get_functions_in_page(content, docs):
+    soup = BeautifulSoup(content, 'html.parser')
+    for h4 in soup.find_all('h4'):
+        if cat not in docs:
+            docs[cat] = []
+        docs[cat].append(h4['id'])
+
+def get_docs_list(docs: dict) -> str:
+    list_str = '<ul>'
+    for category, functions in docs.items():
+        list_str += f'<li>{category.replace("-", " ").title()}</li><ul>'
+        for function in functions:
+            list_str += f'<li><code><strong>{function}</strong></code></li>'
+        list_str += '</ul>'
+    list_str += '</ul>'
+    return list_str
 
 if __name__ == "__main__":
     os.chdir('../build')
@@ -95,19 +110,18 @@ if __name__ == "__main__":
     os.makedirs('contribute')
     with open(f'../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
-    soup = BeautifulSoup(contribute_template, 'html.parser')
-    for h4 in soup.find_all('h4'):
-        print(h4['id'])
     write_with_template({'content': contribute_template}, 'contribute/index.html')
 
     github_links = get_github_links()
+    docs = {}
 
     for category in os.listdir('../data/docs'):
         cat = category.split('.')[0]
-        print(cat)
         os.makedirs(cat)
         content = write_with_links(f'docs/{category}', github_links)
         write_with_template({'content': content}, f'{cat}/index.html')
+        get_functions_in_page(content, docs)
+        
 
     os.makedirs('examples')
     for example in os.listdir('../data/examples'):
@@ -115,4 +129,6 @@ if __name__ == "__main__":
         write_with_template({'content': example_text}, f'examples/{example}')
 
     os.makedirs('docs')
+    list_str = get_docs_list(docs)
+    write_with_template({'content': list_str}, 'docs/index.html')
     
