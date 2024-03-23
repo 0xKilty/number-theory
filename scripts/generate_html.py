@@ -33,10 +33,9 @@ def write_with_template(data: dict, output: str):
     template = Template(base_template)
     rendered_html = template.render(data)
 
-    with open(f'../build/{output}.html', 'w') as output_file:
+    with open(f'../build/{output}', 'w') as output_file:
         output_file.write(rendered_html)
 
-# write_with_links('modulus-operations', github_links, 'modulus-operations/index')
 def write_with_links(template: str, links: dict) -> str:
     with open(f'../data/{template}.html', 'r') as template_file:
         read_template = template_file.read()
@@ -94,25 +93,31 @@ if __name__ == "__main__":
 
     with open(f'../data/index.html', 'r') as index_file:
         index_template = index_file.read()
-
-    write_with_template({'content': index_template}, 'index')
+    write_with_template({'content': index_template}, 'index.html')
 
     os.makedirs('contribute')
 
     with open(f'../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
-
-    write_with_template({'content': contribute_template}, 'contribute/index')
+    write_with_template({'content': contribute_template}, 'contribute/index.html')
 
     github_links = get_github_links()
-    for link, values in github_links.items():
-        print(link, values)
 
-    os.makedirs('modulus-operations')
-    content = write_with_links('modulus-operations', github_links)
+    for category in os.listdir('../data/docs'):
+        cat = category.split('.')[0]
+        os.makedirs(cat)
+        content = write_with_links(f'docs/{cat}', github_links)
+        write_with_template({'content': content}, f'{cat}/index.html')
 
-    write_with_template({'content': content}, 'modulus-operations/index')
-    print(content)
-    # write the categories
     # write the examples
+    os.makedirs('examples')
+    for example in os.listdir('../data/examples'):
+        with open(f'../data/examples/{example}', 'r') as example_file:
+            example_text = example_file.read()
+        
+        write_with_template({'content': example_text}, f'examples/{example}')
+
+
+    
+    
     # write the dir
