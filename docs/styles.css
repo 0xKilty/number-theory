@@ -16,10 +16,18 @@ p {
 }
 
 h1 a,
-ul a,
-code a {
+ul a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+code a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+code a:hover {
+    text-decoration: underline;
 }
 
 a:hover {

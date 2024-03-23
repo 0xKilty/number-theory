@@ -4,6 +4,7 @@ import shutil
 import git
 import re
 import ast
+from bs4 import BeautifulSoup
 
 def clear_dir(dir_name: str):
     for root, dirs, files in os.walk(dir_name, topdown=False):
@@ -25,20 +26,25 @@ def copy_files(source_dir, destination_dir):
         shutil.copy2(source_path, destination_path)
 
 
-def write_with_template(template: str, output: str):
+def write_with_template(data: dict, output: str):
     with open('../templates/base.html', 'r') as base_template_file:
         base_template = base_template_file.read()
 
-    with open(f'../data/{template}.html', 'r') as template_file:
-        index_template = template_file.read()
-
-    base_data = {'content': index_template}
-
     template = Template(base_template)
-    rendered_html = template.render(base_data)
+    rendered_html = template.render(data)
 
     with open(f'../build/{output}.html', 'w') as output_file:
         output_file.write(rendered_html)
+
+# write_with_links('modulus-operations', github_links, 'modulus-operations/index')
+def write_with_links(template: str, links: dict) -> str:
+    with open(f'../data/{template}.html', 'r') as template_file:
+        read_template = template_file.read()
+
+    template = Template(read_template)
+    rendered_html = template.render(links)
+
+    return rendered_html
 
 
 def get_c_function_data(file):
@@ -52,17 +58,14 @@ def get_c_function_data(file):
     return function_info
 
 
-def get_python_function_data(file):
-    functions = []
+def get_python_function_data(file, path, res):
     tree = ast.parse(file)
     for node in tree.body:
         if isinstance(node, ast.FunctionDef):
-            function_name = node.name
-            args = ', '.join(arg.arg + ': ' + ast.unparse(arg.annotation).strip() if arg.annotation else arg.arg for arg in node.args.args)
-            return_annotation = ast.unparse(node.returns).strip() if node.returns else "None"
-            signature = f"{function_name}({args}) -> {return_annotation}"
-            functions.append((function_name, signature, node.lineno))
-    return functions
+            #args = ', '.join(arg.arg + ': ' + ast.unparse(arg.annotation).strip() if arg.annotation else arg.arg for arg in node.args.args)
+            #return_annotation = ast.unparse(node.returns).strip() if node.returns else "None"
+            # signature = f"{node.name}({args}) -> {return_annotation}"
+            res[node.name] = f'https://github.com/0xKilty/number-theory/blob/main/{path}#L{node.lineno}'
 
 
 def get_github_links():
@@ -72,16 +75,15 @@ def get_github_links():
     main_branch = repo.commit(default_branch)
     tree = main_branch.tree
 
+    res = {}
     for blob in tree.traverse():
         if blob.type == 'blob':
             split_path = blob.path.split('/')
             if split_path[0] == 'python':
                 file = repo.git.show(f"{default_branch}:{blob.path}")
-                function_info = get_python_function_data(file)
-                print('\n\n', blob.path)
-                for function in function_info:
-                    print(function)
-
+                get_python_function_data(file, blob.path, res)
+    return res
+        
 
 if __name__ == "__main__":
     os.chdir('../build')
@@ -90,13 +92,27 @@ if __name__ == "__main__":
 
     copy_files('../assets', '.')
 
-    write_with_template('index', 'index')
+    with open(f'../data/index.html', 'r') as index_file:
+        index_template = index_file.read()
+
+    write_with_template({'content': index_template}, 'index')
 
     os.makedirs('contribute')
-    write_with_template('contribute', 'contribute/index')
+
+    with open(f'../data/contribute.html', 'r') as contribute_file:
+        contribute_template = contribute_file.read()
+
+    write_with_template({'content': contribute_template}, 'contribute/index')
 
     github_links = get_github_links()
-    print(github_links)
+    for link, values in github_links.items():
+        print(link, values)
+
+    os.makedirs('modulus-operations')
+    content = write_with_links('modulus-operations', github_links)
+
+    write_with_template({'content': content}, 'modulus-operations/index')
+    print(content)
     # write the categories
     # write the examples
     # write the dir
