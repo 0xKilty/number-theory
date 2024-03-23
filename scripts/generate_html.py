@@ -37,7 +37,7 @@ def write_with_template(data: dict, output: str):
         output_file.write(rendered_html)
 
 def write_with_links(template: str, links: dict) -> str:
-    with open(f'../data/{template}.html', 'r') as template_file:
+    with open(f'../data/{template}', 'r') as template_file:
         read_template = template_file.read()
 
     template = Template(read_template)
@@ -61,9 +61,6 @@ def get_python_function_data(file, path, res):
     tree = ast.parse(file)
     for node in tree.body:
         if isinstance(node, ast.FunctionDef):
-            #args = ', '.join(arg.arg + ': ' + ast.unparse(arg.annotation).strip() if arg.annotation else arg.arg for arg in node.args.args)
-            #return_annotation = ast.unparse(node.returns).strip() if node.returns else "None"
-            # signature = f"{node.name}({args}) -> {return_annotation}"
             res[node.name] = f'https://github.com/0xKilty/number-theory/blob/main/{path}#L{node.lineno}'
 
 
@@ -86,9 +83,7 @@ def get_github_links():
 
 if __name__ == "__main__":
     os.chdir('../build')
-
     clear_dir('.')
-
     copy_files('../assets', '.')
 
     with open(f'../data/index.html', 'r') as index_file:
@@ -96,7 +91,6 @@ if __name__ == "__main__":
     write_with_template({'content': index_template}, 'index.html')
 
     os.makedirs('contribute')
-
     with open(f'../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
     write_with_template({'content': contribute_template}, 'contribute/index.html')
@@ -105,19 +99,14 @@ if __name__ == "__main__":
 
     for category in os.listdir('../data/docs'):
         cat = category.split('.')[0]
+        print(cat)
         os.makedirs(cat)
-        content = write_with_links(f'docs/{cat}', github_links)
+        content = write_with_links(f'docs/{category}', github_links)
         write_with_template({'content': content}, f'{cat}/index.html')
 
-    # write the examples
     os.makedirs('examples')
     for example in os.listdir('../data/examples'):
-        with open(f'../data/examples/{example}', 'r') as example_file:
-            example_text = example_file.read()
-        
+        example_text = write_with_links(f'examples/{example}', github_links)
         write_with_template({'content': example_text}, f'examples/{example}')
 
-
-    
-    
-    # write the dir
+    os.makedirs('docs')
