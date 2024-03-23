@@ -27,17 +27,17 @@ def copy_files(source_dir, destination_dir):
 
 
 def write_with_template(data: dict, output: str):
-    with open('../templates/base.html', 'r') as base_template_file:
+    with open('../../templates/base.html', 'r') as base_template_file:
         base_template = base_template_file.read()
 
     template = Template(base_template)
     rendered_html = template.render(data)
 
-    with open(f'../build/{output}', 'w') as output_file:
+    with open(f'../../build/number-theory/{output}', 'w') as output_file:
         output_file.write(rendered_html)
 
 def write_with_links(template: str, links: dict) -> str:
-    with open(f'../data/{template}', 'r') as template_file:
+    with open(f'../../data/{template}', 'r') as template_file:
         read_template = template_file.read()
 
 
@@ -66,7 +66,7 @@ def get_python_function_data(file, path, res):
 
 
 def get_github_links():
-    repo = git.Repo("..")
+    repo = git.Repo("../..")
     default_branch = "main"
 
     main_branch = repo.commit(default_branch)
@@ -101,21 +101,23 @@ def get_docs_list(docs: dict) -> str:
 if __name__ == "__main__":
     os.chdir('../build')
     clear_dir('.')
-    copy_files('../assets', '.')
+    os.makedirs('number-theory')
+    os.chdir('./number-theory')
+    copy_files('../../assets', '.')
 
-    with open(f'../data/index.html', 'r') as index_file:
+    with open(f'../../data/index.html', 'r') as index_file:
         index_template = index_file.read()
     write_with_template({'content': index_template}, 'index.html')
 
     os.makedirs('contribute')
-    with open(f'../data/contribute.html', 'r') as contribute_file:
+    with open(f'../../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
     write_with_template({'content': contribute_template}, 'contribute/index.html')
 
     github_links = get_github_links()
     docs = {}
 
-    for category in os.listdir('../data/docs'):
+    for category in os.listdir('../../data/docs'):
         cat = category.split('.')[0]
         os.makedirs(cat)
         content = write_with_links(f'docs/{category}', github_links)
@@ -124,7 +126,7 @@ if __name__ == "__main__":
         
 
     os.makedirs('examples')
-    for example in os.listdir('../data/examples'):
+    for example in os.listdir('../../data/examples'):
         example_text = write_with_links(f'examples/{example}', github_links)
         write_with_template({'content': example_text}, f'examples/{example}')
 

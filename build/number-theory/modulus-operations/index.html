@@ -19,23 +19,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/scripts.js"></script>
+    <link rel="stylesheet" href="/number-theory/styles.css">
+    <script src="/number-theory/scripts.js"></script>
 
     <script>past_color()</script>
     <title>Number Theory</title>
 </head>
 
 <body>
-    <h1><a href="/">\( (n, t) \) Number Theory</a></h1>
+    <h1><a href="/number-theory/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
-        <a href="/examples">Examples</a>
-        <a href="/docs">Docs</a>
-        <a href="/contribute">Contribute</a>
+        <a href="/number-theory/examples/">Examples</a>
+        <a href="/number-theory/docs/">Docs</a>
+        <a href="/number-theory/contribute">Contribute</a>
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
         <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
-    <ul><li>Common Functions</li><ul><li><code><strong>gcd</strong></code></li><li><code><strong>extended_euclidean</strong></code></li></ul><li>Fibonacci</li><ul><li><code><strong>fib</strong></code></li><li><code><strong>strassen_mult</strong></code></li></ul><li>Modulus Operations</li><ul><li><code><strong>mod_exp</strong></code></li></ul></ul>
+    <h3>Modulo operations</h3>
+<h4 id="mod_exp">Modular exponentiation</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/modulus_operations.py#L3" target="_blank">
+            mod_exp(a: int, b: int, m: int) -> int
+        </a>
+    </code>
+</h3>
+<p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
+    exponentiate a number modulus.</p> 
+<p>\( a^b \equiv x \mod m \)</p>
 </body>
 
 </html>
