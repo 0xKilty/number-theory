@@ -26,20 +26,25 @@ def copy_files(source_dir, destination_dir):
         shutil.copy2(source_path, destination_path)
 
 
-def write_with_template(data: dict, output: str):
-    with open('../../templates/base.html', 'r') as base_template_file:
+def template_to_string(template: str, data: dict) -> str:
+    template = Template(template)
+    rendered_html = template.render(data)
+    return rendered_html
+
+
+def write_with_template(template: str, data: dict, output: str):
+    with open(f'../../templates/{template}', 'r') as base_template_file:
         base_template = base_template_file.read()
 
-    template = Template(base_template)
-    rendered_html = template.render(data)
+    rendered_html = template_to_string(base_template, data)
 
     with open(f'../../build/number-theory/{output}', 'w') as output_file:
         output_file.write(rendered_html)
 
+
 def write_with_links(template: str, links: dict) -> str:
     with open(f'../../data/{template}', 'r') as template_file:
         read_template = template_file.read()
-
 
     template = Template(read_template)
     rendered_html = template.render(links)
@@ -91,9 +96,17 @@ def get_functions_in_page(content, docs):
 def get_docs_list(docs: dict) -> str:
     list_str = '<ul>'
     for category, functions in docs.items():
-        list_str += f'<li>{category.replace("-", " ").title()}</li><ul>'
+        list_str += f'''
+            <li>
+                <strong><a href="">{category.replace("-", " ").title()}</a></strong>
+            </li><ul>
+        '''
         for function in functions:
-            list_str += f'<li><code><strong>{function}</strong></code></li>'
+            list_str += f'''
+                <li><code>
+                    <strong><a href="">{function}</a></strong>
+                </code></li>
+            '''
         list_str += '</ul>'
     list_str += '</ul>'
     return list_str
@@ -107,12 +120,12 @@ if __name__ == "__main__":
 
     with open(f'../../data/index.html', 'r') as index_file:
         index_template = index_file.read()
-    write_with_template({'content': index_template}, 'index.html')
+    write_with_template('base.html', {'content': index_template}, 'index.html')
 
     os.makedirs('contribute')
     with open(f'../../data/contribute.html', 'r') as contribute_file:
         contribute_template = contribute_file.read()
-    write_with_template({'content': contribute_template}, 'contribute/index.html')
+    write_with_template('base.html', {'content': contribute_template}, 'contribute/index.html')
 
     github_links = get_github_links()
     docs = {}
@@ -121,16 +134,20 @@ if __name__ == "__main__":
         cat = category.split('.')[0]
         os.makedirs(cat)
         content = write_with_links(f'docs/{category}', github_links)
-        write_with_template({'content': content}, f'{cat}/index.html')
+        write_with_template('base.html', {'content': content}, f'{cat}/index.html')
         get_functions_in_page(content, docs)
         
 
     os.makedirs('examples')
     for example in os.listdir('../../data/examples'):
         example_text = write_with_links(f'examples/{example}', github_links)
-        write_with_template({'content': example_text}, f'examples/{example}')
+        write_with_template('base.html', {'content': example_text}, f'examples/{example}')
 
     os.makedirs('docs')
     list_str = get_docs_list(docs)
-    write_with_template({'content': list_str}, 'docs/index.html')
+    with open('../../data/docs.html', 'r') as docs_file:
+        docs_str = docs_file.read()
+    
+    docs_content = template_to_string(docs_str, {'list': list_str})
+    write_with_template('base.html', {'content': docs_content}, 'docs/index.html')
     
