@@ -15,6 +15,10 @@ p {
     line-height: 1.5;
 }
 
+li {
+    padding-bottom: 6px;
+}
+
 h1 a,
 ul a,
 code a {
