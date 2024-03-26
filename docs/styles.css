@@ -15,6 +15,14 @@ p {
     line-height: 1.5;
 }
 
+li {
+    padding-bottom: 6px;
+}
+
+p a {
+    color: var(--text-color);
+}
+
 h1 a,
 ul a,
 code a {
@@ -36,6 +44,9 @@ pre code {
     padding-right: 15px;
 }
 
+h1 a:hover,
+ul a:hover,
+code a:hover,
 .nav a:hover {
     text-decoration: underline;
 }
@@ -52,10 +63,6 @@ pre code {
 
 .badges {
     padding-top: 25px;
-}
-
-.badges img {
-    padding-right: 15px;
 }
 
 .sage {

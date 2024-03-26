@@ -97,15 +97,16 @@ def get_functions_in_page(content, docs):
 def get_docs_list(docs: dict) -> str:
     list_str = '<ul>'
     for category, functions in docs.items():
+        print(category, functions)
         list_str += f'''
             <li>
-                <strong><a href="">{category.replace("-", " ").title()}</a></strong>
+                <strong><a href="/number-theory/{category}">{category.replace("-", " ").title()}</a></strong>
             </li><ul>
         '''
         for function in functions:
             list_str += f'''
                 <li><code>
-                    <strong><a href="">{function}</a></strong>
+                    <strong><a href="/number-theory/{category}#{function}">{function}</a></strong>
                 </code></li>
             '''
         list_str += '</ul>'
