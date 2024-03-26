@@ -80,8 +80,9 @@ def get_github_links():
     res = {}
     for blob in tree.traverse():
         if blob.type == 'blob':
-            split_path = blob.path.split('/')
-            if split_path[0] == 'python':
+            if (blob.type == 'blob' and 
+                blob.path.startswith('python/numbertheory/') and
+                blob.path.endswith('.py')):
                 file = repo.git.show(f"{default_branch}:{blob.path}")
                 get_python_function_data(file, blob.path, res)
     return res

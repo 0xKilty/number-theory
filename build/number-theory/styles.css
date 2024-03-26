@@ -16,7 +16,7 @@ p {
 }
 
 li {
-    padding-bottom: 7px;
+    padding-bottom: 6px;
 }
 
 h1 a,
@@ -56,10 +56,6 @@ pre code {
 
 .badges {
     padding-top: 25px;
-}
-
-.badges img {
-    padding-right: 15px;
 }
 
 .sage {
