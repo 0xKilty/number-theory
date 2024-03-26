@@ -9,4 +9,5 @@ numbertheory/primality_tests.py
 numbertheory.egg-info/PKG-INFO
 numbertheory.egg-info/SOURCES.txt
 numbertheory.egg-info/dependency_links.txt
+numbertheory.egg-info/requires.txt
 numbertheory.egg-info/top_level.txt
