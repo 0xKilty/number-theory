@@ -13,7 +13,6 @@ def load_csv(file: str):
     return data
 
 
-
 def regular_exp(a: int, b: int):
     res = a
     for _ in range(b - 1):
@@ -25,13 +24,16 @@ def python_exp(a: int, b: int):
     return a ** b
 
 
-def measure_time(func, iterations):
+def measure_time(func, data):
     start_time = time.perf_counter()
-    for _ in range(iterations):
-        func(random.randint(1000, 10000), random.randint(1000, 10000))
+    for item in data:
+        func(item[0], item[1])
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
     return elapsed_time
 
 
 data = load_csv('../data/random_numbers.csv')
+
+test_time = measure_time(python_exp, data)
+print(test_time)

@@ -1,0 +1,14 @@
+create the wheel and egg-info
+python setup.py bdist_wheel sdist
+
+install locally
+pip install .
+
+check with twine
+python -m twine check dist/*
+
+upload with twine
+python -m twine upload dist/*
+
+run the tests
+python -m pytest
