@@ -1,5 +1,5 @@
 import random
-from modulus_operations import mod_exp
+from .modulus_operations import mod_exp
 
 def is_prime_brute_force(n: int) -> bool:
     if n <= 1:
@@ -17,15 +17,7 @@ def is_prime_brute_force(n: int) -> bool:
     return True
 
 
-def FLT_pt(n: int) -> bool:
-    a = random.randint(2, n - 1)
-    if mod_exp(a, n, n):
-        return False
-    else:
-        return True
-
-
-def is_prime_fermat(n: int, iterations = 5):
+def is_prime_fermat(n: int, iterations: int = 5):
     if n <= 1:
         return False
     if n <= 3:
@@ -38,7 +30,7 @@ def is_prime_fermat(n: int, iterations = 5):
     return True
 
 
-def rabin_miller(n: int, k=5):
+def is_prime_rabin_miller(n: int, k: int = 5):
     if n <= 1:
         return False
     if n <= 3:

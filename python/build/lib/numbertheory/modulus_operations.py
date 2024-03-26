@@ -1,4 +1,4 @@
-from common_functions import extended_euclidean
+from .common_functions import extended_euclidean
 
 def mod_exp(a: int, b: int, m: int) -> int:
     res = 1

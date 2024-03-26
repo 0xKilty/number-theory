@@ -9,5 +9,3 @@ def prime_factor_decomp(n: int) -> list[int]:
         divisor += 1
     
     return factors
-
-print(prime_factor_decomp(3141592653589))

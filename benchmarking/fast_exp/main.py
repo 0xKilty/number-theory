@@ -1,6 +1,17 @@
 import numbertheory as nt
 import time
 import random
+import csv
+
+
+def load_csv(file: str):
+    data = []
+    with open(file, 'r') as data_file:
+        csvreader = csv.reader(data_file)
+        for row in csvreader:
+            data.append([int(row[0]), int(row[1])])
+    return data
+
 
 
 def regular_exp(a: int, b: int):
@@ -22,8 +33,5 @@ def measure_time(func, iterations):
     elapsed_time = end_time - start_time
     return elapsed_time
 
-regular_exp_time = measure_time(nt.fast_exp, 10000)
-print("Regular Exp Time:", regular_exp_time)
 
-python_exp_time = measure_time(python_exp, 10000)
-print("Python Exp Time:", python_exp_time)
+data = load_csv('../data/random_numbers.csv')
