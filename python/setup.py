@@ -5,16 +5,24 @@ with open('../README.md', 'r') as readme:
     
 setup(
     name='numbertheory',
-    version='0.0.1',
+    version='0.0.2',
     description='Common number theoretic functions.',
     long_description_content_type='text/markdown',
     long_description=long_descripton,
     packages=find_packages(),
-    license='GPL-3.0 license',
+    license='GPL-3.0 License',
     url='https://0xkilty.github.io/number-theory/',
     author='0xKilty',
     author_email='ian.kilty@colostate.edu',
     extras_require={
         'dev': ['twine>=4.0.2']
-    }
+    },
+    classifiers=[
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Intended Audience :: Developers',
+        'Natural Language :: English',
+    ],
 )

@@ -7,5 +7,6 @@
 
 [PyPi](https://pypi.org/project/numbertheory/)
 [Github](https://github.com/0xKilty/number-theory)
+[Docs](https://0xkilty.github.io/number-theory/)
 
 This is a collection of mathematical functions in number theory in different programming languages. Number theory and computer science go hand in hand and the purpose of this project is to bridge the gap between programming and mathematics.
