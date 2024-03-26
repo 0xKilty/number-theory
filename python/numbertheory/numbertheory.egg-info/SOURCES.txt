@@ -1,0 +1,5 @@
+setup.py
+number-theory/numbertheory.egg-info/PKG-INFO
+number-theory/numbertheory.egg-info/SOURCES.txt
+number-theory/numbertheory.egg-info/dependency_links.txt
+number-theory/numbertheory.egg-info/top_level.txt
