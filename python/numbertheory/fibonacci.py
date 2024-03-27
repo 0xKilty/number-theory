@@ -15,7 +15,7 @@ def strassen_mult(x: list[list[int]], y: list[list[int]]) -> list[list[int]]:
     return result
 
 
-def matrix_exp(m, n):
+def matrix_exp(m: list[list[int]], n: int) -> list[list[int]]:
     if n % 2 == 1:
         if (n == 1):
             return m
@@ -24,7 +24,7 @@ def matrix_exp(m, n):
     return strassen_mult(matrix_half, matrix_half)
 
 
-def fib(n):
+def fib(n: int) -> int:
     m = [[1, 1], [1, 0]]
     m = matrix_exp(m, n)
     return m[0][1]
