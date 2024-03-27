@@ -1,6 +1,6 @@
-import numbertheory as nt
 import time
 import random
+import numbertheory as nt
 import csv
 
 
@@ -36,4 +36,4 @@ def measure_time(func, data):
 data = load_csv('../data/random_numbers.csv')
 
 test_time = measure_time(python_exp, data)
-print(test_time)
+print(f'Time taken: {test_time} seconds')

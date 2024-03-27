@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <gmp.h>
 
 #define MAX_LINE_LENGTH 1024
 #define MAX_COLUMNS 2
@@ -68,15 +69,22 @@ int main() {
     struct Pair *pairs = (struct Pair *)malloc(num_rows * sizeof(struct Pair));
     read_csv_file(file, pairs);
 
+    mpz_t base, exponent, result;
+    mpz_inits(base, exponent, result, NULL);
+
     clock_t start = clock();
     for (int i = 0; i < num_rows; i++) {
-        printf("%lld ^ %lld = %lld\n", pairs[i].a, pairs[i].b, fast_exp(pairs[i].a, pairs[i].b));
+        mpz_set_si(base, pairs[i].a);
+        mpz_set_si(exponent, pairs[i].b);
+        mpz_pow_ui(result, base, mpz_get_ui(exponent));
+        //gmp_printf("Result: %Zd\n", result);
     }
     clock_t end = clock();
     double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Time taken: %f seconds\n", cpu_time_used);
 
     free(pairs);
+    mpz_clears(base, exponent, result, NULL);
 
     fclose(file);
 
