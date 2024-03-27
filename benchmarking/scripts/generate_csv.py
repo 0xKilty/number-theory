@@ -2,7 +2,7 @@ import random
 import csv
 
 def generate_random_numbers():
-    return random.randint(1000, 10000), random.randint(1000, 10000)
+    return random.randint(100, 100), random.randint(100, 100)
 
 num_iterations = 10000
 

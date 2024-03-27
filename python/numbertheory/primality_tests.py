@@ -1,5 +1,5 @@
 import random
-from .modulus_operations import mod_exp
+from modulus_operations import mod_exp
 
 def is_prime_brute_force(n: int) -> bool:
     if n <= 1:
