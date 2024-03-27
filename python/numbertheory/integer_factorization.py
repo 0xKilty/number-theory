@@ -1,3 +1,6 @@
+from common_functions import gcd, mod_exp
+
+
 def brute_force_factorization(n: int) -> list[int]:
     factors = []
     divisor = 2
@@ -21,3 +24,11 @@ def fermat_factorization(n: int) -> tuple[int, int]:
     p = a + b
     q = a - b
     return p, q
+
+
+def pollards_p_minus_one_factorization(n: int, b: int) -> tuple[int, int]:
+    a = 2
+    for j in range(2, b + 1):
+        a = mod_exp(a, j, n)
+    p = gcd(a - 1, n)
+    return p
