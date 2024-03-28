@@ -31,4 +31,4 @@ def pollards_p_minus_one_factorization(n: int, b: int) -> tuple[int, int]:
     for j in range(2, b + 1):
         a = mod_exp(a, j, n)
     p = gcd(a - 1, n)
-    return p
+    return p, n // p
