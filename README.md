@@ -24,4 +24,5 @@ import numbertheory
 ```
 
 ## Contribute
-To learn how to contribute to open source 
+To learn how to contribute to open source projects please visit [opensource.guide](https://opensource.guide/how-to-contribute/).
+To learn more about git version control, github provides a [git guide](https://github.com/git-guides). 
