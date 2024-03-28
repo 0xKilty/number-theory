@@ -41,6 +41,7 @@
 <p>Uses the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="_blank">Euclidean algorithm</a> to
     calculate the greatest common divisor between two numbers.</p> 
 <p>\( x = \gcd(a, b) \)</p>
+<br>
 
 <h4 id="extended_euclidean">Extended Euclidean Algorithm</h4>
 <h3>
@@ -53,6 +54,7 @@
 <p>Uses the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank">Extended Euclidean algorithm</a> to
     calculate solutions to the following equation. These solutions are called <a href="https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity" target="_blank">Bezout coefficients</a>.</p> 
 <p>\( ax + by = \gcd(a, b) \)</p>
+<br>
 
 <h4 id="eulers_totient">Eulers Totient</h4>
 <h3>
@@ -64,6 +66,48 @@
 </h3>
 <p>This function calculates Euler's totient function, also known as <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function" target="_blank">Euler's phi function</a>, which counts the number of positive integers less than or equal to n that are relatively prime to n.</p> 
 <p>\( x = \phi(n) \)</p>
+<br>
+
+<h4 id="is_coprime">Coprime Test</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L31" target="_blank">
+            is_coprime(a: int, b: int) -> bool
+        </a>
+    </code>
+</h3>
+<p>This function checks whether two integers are coprime, i.e., whether their greatest common divisor (GCD) is equal to 1.</p> 
+<p>\( \gcd(a, b) = 1 \)</p>
+<br>
+
+<h4 id="fast_exp">Fast Exponentiation</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L35" target="_blank">
+            fast_exp(a: int, b: int) -> int
+        </a>
+    </code>
+</h3>
+<p>
+    This function calculates the exponentiation of an integer 'a' raised to the power of another integer 'b' using an optimized algorithm known as 
+    <a href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring" target="_blank">exponentiation by squaring</a>. 
+</p> 
+<p>\( a^b = x \)</p>
+<br>
+
+<h4 id="mod_exp">Modulus Exponentiation</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L45" target="_blank">
+            mod_exp(a: int, b: int, m: int) -> int
+        </a>
+    </code>
+</h3>
+<p>
+    This function efficiently calculates the modular exponentiation of a base `a` raised to an exponent `b`, modulo `m` using the 
+    <a href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring" target="_blank">exponentiation by squaring</a> algorithm.
+</p> 
+<p>\( a^b \equiv x \mod m\)</p>
 </body>
 
 </html>
