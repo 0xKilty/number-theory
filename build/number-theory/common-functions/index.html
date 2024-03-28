@@ -38,7 +38,7 @@
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Euclidean algorithm</a> to
+<p>Uses the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="_blank">Euclidean algorithm</a> to
     calculate the greatest common divisor between two numbers.</p> 
 <p>\( x = \gcd(a, b) \)</p>
 
@@ -50,9 +50,20 @@
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Euclidean algorithm</a> to
-    calculate the greatest common divisor between two numbers.</p> 
-<p>\( x = \gcd(a, b) \)</p>
+<p>Uses the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm" target="_blank">Extended Euclidean algorithm</a> to
+    calculate solutions to the following equation. These solutions are called <a href="https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity" target="_blank">Bezout coefficients</a>.</p> 
+<p>\( ax + by = \gcd(a, b) \)</p>
+
+<h4 id="eulers_totient">Eulers Totient</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L17" target="_blank">
+            eulers_totient(n: int) -> int
+        </a>
+    </code>
+</h3>
+<p>This function calculates Euler's totient function, also known as <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function" target="_blank">Euler's phi function</a>, which counts the number of positive integers less than or equal to n that are relatively prime to n.</p> 
+<p>\( x = \phi(n) \)</p>
 </body>
 
 </html>
