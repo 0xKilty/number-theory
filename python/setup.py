@@ -10,7 +10,7 @@ setup(
     long_description_content_type='text/markdown',
     long_description=long_descripton,
     packages=find_packages(),
-    license='GPL-3.0 License',
+    license='MIT',
     url='https://0xkilty.github.io/number-theory/',
     author='0xKilty',
     author_email='ian.kilty@colostate.edu',
@@ -18,7 +18,7 @@ setup(
         'dev': ['twine>=4.0.2']
     },
     classifiers=[
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'License :: OSI Approved :: MIT',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
