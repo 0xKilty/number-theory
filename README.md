@@ -10,3 +10,18 @@
 [Docs](https://0xkilty.github.io/number-theory/)
 
 This is a collection of mathematical functions in number theory in different programming languages. Number theory and computer science go hand in hand and the purpose of this project is to bridge the gap between programming and mathematics.
+
+## Usage
+`numbertheory` is avalible as a python package and can be installed with `pip`. 
+```bash
+pip install numbertheory
+```
+View the PyPi package [here](https://pypi.org/project/numbertheory/).
+
+To use `numbertheory` in a python script, it can be imported with the following line.
+```python
+import numbertheory
+```
+
+## Contribute
+To learn how to contribute to open source 
