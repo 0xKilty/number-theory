@@ -1,0 +1,33 @@
+<h3>Generating Primes</h3>
+<h4 id="trial_division">Trial Division</h4>
+<h3>
+    <code>
+        <a href="{{ trial_division }}" target="_blank">
+            trial_division(n: int) -> list[int]
+        </a>
+    </code>
+</h3>
+<p>
+    The trial division function iterates over numbers from 2 to n, checking each number for 
+    primality using <a href="https://en.wikipedia.org/wiki/Trial_division" target="_blank">trial division</a>. 
+    It divides each number by all integers up to its square root to determine if it is 
+    divisible by any other number besides 1 and itself. If the number is found to be prime, it is added to the list of primes.
+</p>
+<br>
+
+<h4 id="sieve_of_eratosthenes">Sieve of Eratosthenes</h4>
+<h3>
+    <code>
+        <a href="{{ sieve_of_eratosthenes }}" target="_blank">
+            sieve_of_eratosthenes(n: int) -> list[int]
+        </a>
+    </code>
+</h3>
+<p>
+    The <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of Eratosthenes</a> 
+    function initializes a boolean array is_prime of size n + 1, 
+    where each element is initially set to True. It then iterates over the integers from 2 
+    to the square root of n, marking multiples of each prime number as False in the is_prime array. 
+    Finally, it constructs a list of prime numbers based on the is_prime array and returns it.
+</p>
+<br>

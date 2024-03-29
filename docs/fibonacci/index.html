@@ -34,13 +34,16 @@
 <h3>
     <code>
         <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/fibonacci.py#L27" target="_blank">
-            mod_exp(a: int, b: int, m: int) -> int
+            fib(n: int) -> int
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-    exponentiate a number modulus.</p> 
-<p>\( a^b \equiv x \mod m \)</p>
+<p>
+    This function calculates the n-th <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence" target="_blank">Fibonacci number</a> 
+    efficiently using matrix exponentiation.
+</p> 
+<p>\( x = \text{fib}(n) \)</p>
+<br>
 
 <h4 id="strassen_mult">Strassen Multiplication</h4>
 <h3>
@@ -50,9 +53,66 @@
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-    exponentiate a number modulus.</p> 
-<p>\( a^b \equiv x \mod m \)</p>
+<p>
+    Multiplies 2 by 2 matricies using the <a href="https://en.wikipedia.org/wiki/Strassen_algorithm" target="_blank">Strassen algorithm</a>
+    which is faster than regular matrix multiplication by decomposing the matrix to use more addition operations and fewer multiplication
+    operations.
+</p> 
+<p>
+    \(
+        \begin{bmatrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22} \\
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            b_{11} & b_{12} \\
+            b_{21} & b_{22} \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            c_{11} & c_{12} \\
+            c_{21} & c_{22} \\
+        \end{bmatrix}
+    \)
+</p>
+<br>
+
+<h4 id="matrix_exp">Matrix Exponentiation</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/fibonacci.py#L18" target="_blank">
+            matrix_exp(m: list[list[int]], n: int) -> list[list[int]]
+        </a>
+    </code>
+</h3>
+<p>
+    Calculates the exponentiation of a matrix. This is useful for the Fibonacci function as due to a 
+    <a href="https://en.wikipedia.org/wiki/Recurrence_relation">linear recurrence relation</a>, the following matrix exponentiation results in
+    calculating the Fibonacci numbers.
+</p> 
+<p>
+    \( 
+        \begin{bmatrix}
+            1 & 1 \\
+            1 & 0 \\
+        \end{bmatrix}^n
+        =
+        \begin{bmatrix}
+            \text{fib}(n+1) & \text{fib}(n) \\
+            \text{fib}(n) &  \text{fib}(n-1) \\
+        \end{bmatrix} 
+    \)
+</p>
+<p>
+    This results in an algorithm with a \( O(\log(n)) \) time complexity with the laws of exponents.
+</p>
+<p>
+    \(
+        x^n = (x^{n/2})(x^{n/2})
+    \)
+</p>
+<br>
 </body>
 
 </html>

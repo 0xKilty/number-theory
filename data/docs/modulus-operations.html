@@ -7,6 +7,28 @@
         </a>
     </code>
 </h3>
+<p>
+    Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
+    exponentiate a number modulus. 
+</p> 
+<p>\( a^b \equiv x \mod m \)</p>
+<p>
+    This works by decomposing the number into a sum of powers of 2.
+    This is already done since computers represent numbers in base 2 (binary).
+</p>
+<p>\( 314 = 100111010_2 = 2^1 + 2^3 + 2^4 + 2^5 + 2^8\)</p>
+<p>Then computing \( 2^k \mod m \) for each digit in binary by squaring the previous iteration.</p>
+<br>
+
+<h4 id="chinese_remainder_theorem">Chinese Remainder Theorem</h4>
+<h3>
+    <code>
+        <a href="{{ chinese_remainder_theorem }}" target="_blank">
+            chinese_remainder_theorem(moduli: list[int], remainders: list[int]) -> list[int]
+        </a>
+    </code>
+</h3>
 <p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
     exponentiate a number modulus.</p> 
 <p>\( a^b \equiv x \mod m \)</p>
+<br>
