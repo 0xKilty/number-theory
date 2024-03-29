@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: numbertheory
-Version: 0.0.2
+Version: 0.0.3
 Summary: Common number theoretic functions.
 Home-page: https://0xkilty.github.io/number-theory/
 Author: 0xKilty
 Author-email: ian.kilty@colostate.edu
-License: GPL-3.0 License
-Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Classifier: Programming Language :: Python
 Classifier: Topic :: Software Development :: Libraries :: Python Modules
@@ -27,3 +27,19 @@ Provides-Extra: dev
 [Docs](https://0xkilty.github.io/number-theory/)
 
 This is a collection of mathematical functions in number theory in different programming languages. Number theory and computer science go hand in hand and the purpose of this project is to bridge the gap between programming and mathematics.
+
+## Usage
+`numbertheory` is avalible as a python package and can be installed with `pip`. 
+```bash
+pip install numbertheory
+```
+View the PyPi package [here](https://pypi.org/project/numbertheory/).
+
+To use `numbertheory` in a python script, it can be imported with the following line.
+```python
+import numbertheory
+```
+
+## Contribute
+To learn how to contribute to open source projects please visit [opensource.guide](https://opensource.guide/how-to-contribute/).
+To learn more about git version control, github provides a [git guide](https://github.com/git-guides). 

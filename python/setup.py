@@ -5,7 +5,7 @@ with open('../README.md', 'r') as readme:
     
 setup(
     name='numbertheory',
-    version='0.0.2',
+    version='0.0.3',
     description='Common number theoretic functions.',
     long_description_content_type='text/markdown',
     long_description=long_descripton,
@@ -18,7 +18,7 @@ setup(
         'dev': ['twine>=4.0.2']
     },
     classifiers=[
-        'License :: OSI Approved :: MIT',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
