@@ -26,5 +26,3 @@ def point_doubling(p, a, p_mod):
         x_r = (pow(s, 2) - 2 * p[0]) % p_mod
         y_r = (s * (p[0] - x_r) - p[1]) % p_mod
         return x_r, y_r
-
-a = -7
