@@ -13,20 +13,14 @@ import timeit
 
 {{ func_is_prime_brute_force }}
 
-execution_time = timeit.timeit('is_prime_brute_force(31415)', globals=globals(), number=10000)
+execution_time = timeit.timeit('is_prime_brute_force(314159)', globals=globals(), number=10000)
 print("Execution time:", execution_time)
-
-start_cputime = cputime()
-print(is_prime_brute_force(37493))
-end_cputime = cputime()
-cpu_execution_time = end_cputime - start_cputime
-print(cpu_execution_time)
 </script>
 </div>
 
 <p>
     <a href="{{ is_prime_fermat }}" target="_blank">is_prime_fermat</a> 
-    The is_prime_fermat function determines whether a given integer n is a prime 
+    determines whether a given integer n is a prime 
     number using Fermat's primality test. It iterates through a specified number 
     of iterations, each time randomly selecting a base a between 2 and n - 1. For 
     each iteration, it checks if \( a^n \mod n \) is equal to \( a \). If any of 
@@ -43,11 +37,28 @@ import random
 
 {{ func_is_prime_fermat }}
 
+execution_time = timeit.timeit('is_prime_fermat(314159)', globals=globals(), number=10000)
+print("Execution time:", execution_time)
+</script>
+</div>
 
-start_cputime = cputime()
-is_prime_fermat(314159)
-end_cputime = cputime()
-cpu_execution_time = end_cputime - start_cputime
-print(cpu_execution_time)
+<p>
+    <a href="{{ is_prime_rabin_miller }}" target="_blank">is_prime_rabin_miller</a> 
+    probabilistically tests whether a given integer `n` is prime.
+    It performs `k` iterations, each time randomly selecting a base `a` and checking whether `n`
+    passes the Miller-Rabin primality test with that base. The more iterations performed (i.e., higher `k`),
+    the more accurate the primality test becomes.
+</p>
+<div class="sage">
+<script type="text/x-sage">
+import timeit
+import random
+
+{{ func_mod_exp }}
+
+{{ func_is_prime_rabin_miller }}
+
+execution_time = timeit.timeit('is_prime_rabin_miller(314159)', globals=globals(), number=10000)
+print("Execution time:", execution_time)
 </script>
 </div>
