@@ -24,10 +24,9 @@
     <h1><a href="/number-theory/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
         <a href="/number-theory/examples/">Examples</a>
-        <a href="/number-theory/docs/">Docs</a>
-        <a href="/number-theory/contribute">Contribute</a>
+        <a href="/number-theory/directory/">Directory</a>
+        <a href="https://pypi.org/project/numbertheory/" target="_blank">PyPi</a>
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
-        <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
     <h3>Common Functions</h3>
 <h4 id="gcd">Greatest Common Divisor</h4>
@@ -95,7 +94,7 @@
 <p>\( a^b = x \)</p>
 <br>
 
-<h4 id="mod_exp">Modulus Exponentiation</h4>
+<h4 id="mod_exp">Modular exponentiation</h4>
 <h3>
     <code>
         <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L51" target="_blank">
@@ -104,10 +103,17 @@
     </code>
 </h3>
 <p>
-    This function efficiently calculates the modular exponentiation of a base `a` raised to an exponent `b`, modulo `m` using the 
-    <a href="https://en.wikipedia.org/wiki/Exponentiation_by_squaring" target="_blank">exponentiation by squaring</a> algorithm.
+    Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
+    exponentiate a number modulus. 
 </p> 
-<p>\( a^b \equiv x \mod m\)</p>
+<p>\( a^b \equiv x \mod m \)</p>
+<p>
+    This works by decomposing the number into a sum of powers of 2.
+    This is already done since computers represent numbers in base 2 (binary).
+</p>
+<p>\( 314 = 100111010_2 = 2^1 + 2^3 + 2^4 + 2^5 + 2^8\)</p>
+<p>Then computing \( 2^k \mod m \) for each digit in binary by squaring the previous iteration.</p>
+<br>
     <div style="margin-bottom: 100px;"></div>
 </body>
 

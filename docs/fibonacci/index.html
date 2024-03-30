@@ -24,10 +24,9 @@
     <h1><a href="/number-theory/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
         <a href="/number-theory/examples/">Examples</a>
-        <a href="/number-theory/docs/">Docs</a>
-        <a href="/number-theory/contribute">Contribute</a>
+        <a href="/number-theory/directory/">Directory</a>
+        <a href="https://pypi.org/project/numbertheory/" target="_blank">PyPi</a>
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
-        <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
     <h3>Fibonacci Numbers</h3>
 <h4 id="fib">Fibonacci Function</h4>
@@ -42,7 +41,16 @@
     This function calculates the n-th <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence" target="_blank">Fibonacci number</a> 
     efficiently using matrix exponentiation.
 </p> 
-<p>\( x = \text{fib}(n) \)</p>
+<p>
+    \( 
+       \begin{array}{l}
+            f(0) = 0 \\
+            f(1) = 1 \\
+            \text{For } n \geq 2 \\
+            f(n) = f(n-1) + f(n-2) 
+        \end{array}
+    \)
+</p>
 <br>
 
 <h4 id="strassen_mult">Strassen Multiplication</h4>
@@ -109,7 +117,10 @@
 </p>
 <p>
     \(
-        x^n = (x^{n/2})(x^{n/2})
+        x^n = \begin{cases}
+                x(x^2)^{n-1/2} & \text{if } n \text{ is odd} \\
+                (x^2)^{n/2} & \text{if } n \text{ is even} 
+              \end{cases}
     \)
 </p>
 <br>

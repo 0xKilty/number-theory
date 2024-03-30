@@ -24,27 +24,90 @@
     <h1><a href="/number-theory/">\( (n, t) \) Number Theory</a></h1>
     <div class="nav">
         <a href="/number-theory/examples/">Examples</a>
-        <a href="/number-theory/docs/">Docs</a>
-        <a href="/number-theory/contribute">Contribute</a>
+        <a href="/number-theory/directory/">Directory</a>
+        <a href="https://pypi.org/project/numbertheory/" target="_blank">PyPi</a>
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
-        <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
-    <h3>Fast Powering Algorithm</h3>
-<p>The <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L51">mod_exp</a> function calculates modular exponentiation efficiently using the binary exponentiation algorithm. Given three integers a, b, and m, where a is the base, b is the exponent, and m is the modulus, it returns the result of (a^b) % m.
-The function iterates through the binary representation of the exponent b, updating the result by squaring the base modulo m when encountering a '1' in the binary representation of b, and then multiplying it with the current base modulo m. This approach significantly reduces the number of multiplications needed, making it efficient for large exponents.</p>
+    <h3>Primality Tests</h3>
+<p>
+    <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/primality_tests.py#L4" target="_blank">is_prime_brute_force</a> 
+    attempts to divide every number up until the
+    square root of the number to check for primality. There are a few optimizations
+    such as checking if the number is divisible by 2 and 3 at the start which allows
+    it to start checking numbers starting at 5. This function is not efficient
+    and there are quicker methods for checking if a number is prime.
+</p>
 <div class="sage">
 <script type="text/x-sage">
+import timeit
+
+def is_prime_brute_force(n: int) -> bool:
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+execution_time = timeit.timeit('is_prime_brute_force(31415)', globals=globals(), number=10000)
+print("Execution time:", execution_time)
+
+start_cputime = cputime()
+print(is_prime_brute_force(37493))
+end_cputime = cputime()
+cpu_execution_time = end_cputime - start_cputime
+print(cpu_execution_time)
+</script>
+</div>
+
+<p>
+    <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/primality_tests.py#L20" target="_blank">is_prime_fermat</a> 
+    The is_prime_fermat function determines whether a given integer n is a prime 
+    number using Fermat's primality test. It iterates through a specified number 
+    of iterations, each time randomly selecting a base a between 2 and n - 1. For 
+    each iteration, it checks if \( a^n \mod n \) is equal to \( a \). If any of 
+    these checks fail, the function immediately returns False, indicating that n 
+    is composite. If all iterations pass, the function returns True, indicating 
+    that n is likely prime according to Fermat's primality test.
+</p>
+<div class="sage">
+<script type="text/x-sage">
+import timeit
+import random
+
 def mod_exp(a: int, b: int, m: int) -> int:
     res = 1
     a %= m
     while b > 0:
         if b & 1:
-            res = (res * a) % m
+            res = res * a % m
         b >>= 1
-        a = (a * a) % m
+        a = a * a % m
     return res
 
-mod_exp(2, 314159265358979, 17)
+def is_prime_fermat(n: int, iterations: int=5) -> bool:
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    for _ in range(iterations):
+        a = random.randint(2, n - 1)
+        if mod_exp(a, n, n) != a:
+            return False
+    return True
+
+
+start_cputime = cputime()
+is_prime_fermat(314159)
+end_cputime = cputime()
+cpu_execution_time = end_cputime - start_cputime
+print(cpu_execution_time)
 </script>
 </div>
     <div style="margin-bottom: 100px;"></div>

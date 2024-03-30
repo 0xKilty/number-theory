@@ -42,12 +42,12 @@ def write_with_template(template: str, data: dict, output: str):
         output_file.write(rendered_html)
 
 
-def write_with_links(template: str, links: dict) -> str:
+def write_with_data(template: str, data: dict) -> str:
     with open(f'../../data/{template}', 'r') as template_file:
         read_template = template_file.read()
 
     template = Template(read_template)
-    rendered_html = template.render(links)
+    rendered_html = template.render(data)
 
     return rendered_html
 
@@ -63,29 +63,30 @@ def get_c_function_data(file):
     return function_info
 
 
-def get_python_function_data(file, path, res):
+def get_python_function_data(file, path, code_data):
     tree = ast.parse(file)
     for node in tree.body:
         if isinstance(node, ast.FunctionDef):
-            res[node.name] = f'https://github.com/0xKilty/number-theory/blob/main/{path}#L{node.lineno}'
+            code_data[node.name] = f'https://github.com/0xKilty/number-theory/blob/main/{path}#L{node.lineno}'
+            code_data["func_" + node.name] = ast.unparse(node)
 
 
-def get_github_links():
+def get_code_data():
     repo = git.Repo("../..")
     default_branch = "main"
 
     main_branch = repo.commit(default_branch)
     tree = main_branch.tree
 
-    res = {}
+    code_data = {}
     for blob in tree.traverse():
         if blob.type == 'blob':
             if (blob.type == 'blob' and 
                 blob.path.startswith('python/numbertheory/') and
                 blob.path.endswith('.py')):
                 file = repo.git.show(f"{default_branch}:{blob.path}")
-                get_python_function_data(file, blob.path, res)
-    return res
+                get_python_function_data(file, blob.path, code_data)
+    return code_data
 
 def get_functions_in_page(content, docs):
     soup = BeautifulSoup(content, 'html.parser')
@@ -124,32 +125,27 @@ if __name__ == "__main__":
         index_template = index_file.read()
     write_with_template('base.html', {'content': index_template}, 'index.html')
 
-    os.makedirs('contribute')
-    with open(f'../../data/contribute.html', 'r') as contribute_file:
-        contribute_template = contribute_file.read()
-    write_with_template('base.html', {'content': contribute_template}, 'contribute/index.html')
-
-    github_links = get_github_links()
+    code_data = get_code_data()
     docs = {}
 
     for category in os.listdir('../../data/docs'):
         cat = category.split('.')[0]
         os.makedirs(cat)
-        content = write_with_links(f'docs/{category}', github_links)
+        content = write_with_data(f'docs/{category}', code_data)
         write_with_template('base.html', {'content': content}, f'{cat}/index.html')
         get_functions_in_page(content, docs)
         
 
     os.makedirs('examples')
     for example in os.listdir('../../data/examples'):
-        example_text = write_with_links(f'examples/{example}', github_links)
+        example_text = write_with_data(f'examples/{example}', code_data)
         write_with_template('base.html', {'content': example_text}, f'examples/{example}')
 
-    os.makedirs('docs')
+    os.makedirs('directory')
     list_str = get_docs_list(docs)
-    with open('../../data/docs.html', 'r') as docs_file:
+    with open('../../data/directory.html', 'r') as docs_file:
         docs_str = docs_file.read()
     
     docs_content = template_to_string(docs_str, {'list': list_str})
-    write_with_template('base.html', {'content': docs_content}, 'docs/index.html')
+    write_with_template('base.html', {'content': docs_content}, 'directory/index.html')
     
