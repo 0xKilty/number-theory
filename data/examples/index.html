@@ -1,11 +1,21 @@
 <h2>Examples</h2>
 <p>
-    number-theory is an open source library designed to provide mathematical 
-    and programming examples of functions in number theory.
+    All of the examples use <a href="https://sagecell.sagemath.org/" target="_blank">SageMathCell</a>
+    in order to run the code in the browser. Because of this, all of the functions in the package
+    are able to run in SageMathCell. Below is the <a href="{{ gcd }}" target="_blank">gcd</a> function
+    which updates with the codebase if there are ever any changes to it.
 </p>
+<div class="sage">
+<script type="text/x-sage">
+{{ func_gcd }}
+
+gcd(31415, 926535)
+</script>
+</div>
 <ul>
     <li><a href="fast-powering-algorithm.html"><strong>Fast Powering Algorithm</strong></a></li>
     <li><a href="integer-factorization.html"><strong>Integer Factorization</strong></a></li>
     <li><a href="primality-tests.html"><strong>Primality Tests</strong></a></li>
     <li><a href="rsa.html"><strong>RSA Encryption and Decryption</strong></a></li>
 </ul>
+</div>
