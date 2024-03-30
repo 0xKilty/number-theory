@@ -29,39 +29,37 @@
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
         <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
-    <h3>Modulo operations</h3>
-<h4 id="mod_exp">Modular exponentiation</h4>
+    <h3>Primality Tests</h3>
+
+<h4 id="brute_force_factorization">Brute Force Factorization</h4>
 <h3>
     <code>
-        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L51" target="_blank">
-            mod_exp(a: int, b: int, m: int) -> int
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/integer_factorization.py#L4" target="_blank">
+            brute_force_factorization(n: int) -> list[int]
         </a>
     </code>
 </h3>
 <p>
-    Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-    exponentiate a number modulus. 
-</p> 
-<p>\( a^b \equiv x \mod m \)</p>
-<p>
-    This works by decomposing the number into a sum of powers of 2.
-    This is already done since computers represent numbers in base 2 (binary).
+    This function takes an integer n as input and returns a list of prime factors of n. It employs a 
+    brute-force approach by iteratively dividing n by increasing divisors starting from 2 until n becomes 1.
+    This algorithm is not efficient and there are often better ways to find prime factors of a number.
 </p>
-<p>\( 314 = 100111010_2 = 2^1 + 2^3 + 2^4 + 2^5 + 2^8\)</p>
-<p>Then computing \( 2^k \mod m \) for each digit in binary by squaring the previous iteration.</p>
 <br>
 
-<h4 id="chinese_remainder_theorem">Chinese Remainder Theorem</h4>
+<h4 id="fermat_factorization">Fermat Factorization</h4>
 <h3>
     <code>
-        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/modulus_operations.py#L11" target="_blank">
-            chinese_remainder_theorem(moduli: list[int], remainders: list[int]) -> list[int]
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/integer_factorization.py#L17" target="_blank">
+            fermat_factorization(n: int) -> tuple[int, int]
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Modular_exponentiation">fast powering algorithm</a> to
-    exponentiate a number modulus.</p> 
-<p>\( a^b \equiv x \mod m \)</p>
+<p>
+    Fermat's factorization algorithm is an integer factorization method that exploits
+    the property of a difference of squares. Given an odd integer \( n \), it finds two 
+    factors \( p \) and \( q \) such that \( n = pq \). The algorithm works by searching for 
+    integers \( a \) and \( b \) such that \( a^2 - b^2 = n \), then \( n = (a + b)(a - b) \).
+</p>
 <br>
     <div style="margin-bottom: 100px;"></div>
 </body>

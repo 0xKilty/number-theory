@@ -29,7 +29,25 @@
         <a href="https://github.com/0xKilty/number-theory" target="_blank">Source code</a>
         <a id="color-mode" onclick="toggle_color()">Dark</a>
     </div>
-    
+    <h3>Fast Powering Algorithm</h3>
+<p>The <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/common_functions.py#L51">mod_exp</a> function calculates modular exponentiation efficiently using the binary exponentiation algorithm. Given three integers a, b, and m, where a is the base, b is the exponent, and m is the modulus, it returns the result of (a^b) % m.
+The function iterates through the binary representation of the exponent b, updating the result by squaring the base modulo m when encountering a '1' in the binary representation of b, and then multiplying it with the current base modulo m. This approach significantly reduces the number of multiplications needed, making it efficient for large exponents.</p>
+<div class="sage">
+<script type="text/x-sage">
+def mod_exp(a: int, b: int, m: int) -> int:
+    res = 1
+    a %= m
+    while b > 0:
+        if b & 1:
+            res = (res * a) % m
+        b >>= 1
+        a = (a * a) % m
+    return res
+
+mod_exp(2, 314159265358979, 17)
+</script>
+</div>
+    <div style="margin-bottom: 100px;"></div>
 </body>
 
 </html>

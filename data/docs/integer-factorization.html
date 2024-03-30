@@ -1,0 +1,32 @@
+<h3>Primality Tests</h3>
+
+<h4 id="brute_force_factorization">Brute Force Factorization</h4>
+<h3>
+    <code>
+        <a href="{{ brute_force_factorization }}" target="_blank">
+            brute_force_factorization(n: int) -> list[int]
+        </a>
+    </code>
+</h3>
+<p>
+    This function takes an integer n as input and returns a list of prime factors of n. It employs a 
+    brute-force approach by iteratively dividing n by increasing divisors starting from 2 until n becomes 1.
+    This algorithm is not efficient and there are often better ways to find prime factors of a number.
+</p>
+<br>
+
+<h4 id="fermat_factorization">Fermat Factorization</h4>
+<h3>
+    <code>
+        <a href="{{ fermat_factorization }}" target="_blank">
+            fermat_factorization(n: int) -> tuple[int, int]
+        </a>
+    </code>
+</h3>
+<p>
+    Fermat's factorization algorithm is an integer factorization method that exploits
+    the property of a difference of squares. Given an odd integer \( n \), it finds two 
+    factors \( p \) and \( q \) such that \( n = pq \). The algorithm works by searching for 
+    integers \( a \) and \( b \) such that \( a^2 - b^2 = n \), then \( n = (a + b)(a - b) \).
+</p>
+<br>

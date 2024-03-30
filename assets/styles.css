@@ -1,72 +1,77 @@
 :root {
-    --background-color: white;
-    --text-color: black;
+  --background-color: white;
+  --text-color: black;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    width: 50%;
-    min-width: 14em;
-    margin: auto;
-    background-color: var(--background-color);
-    color: var(--text-color);
+  font-family: Arial, sans-serif;
+  width: 50%;
+  min-width: 14em;
+  margin: auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 p {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 li {
-    padding-bottom: 6px;
+  padding-bottom: 6px;
 }
 
 p a {
-    color: var(--text-color);
-    font-weight: 700;
+  color: var(--text-color);
+  font-weight: 700;
 }
 
 h1 a,
 ul a,
 code a {
-    color: var(--text-color);
-    text-decoration: none;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 a:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-pre code {
-    font-size: large;
+code {
+  font-size: large;
 }
 
 .nav a {
-    color: grey;
-    text-decoration: none;
-    padding-right: 15px;
+  color: grey;
+  text-decoration: none;
+  padding-right: 15px;
 }
 
 h1 a:hover,
 ul a:hover,
 code a:hover,
 .nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .sig .hash {
-    color: black;
-    text-decoration: none;
-    display: none;
+  color: black;
+  text-decoration: none;
+  display: none;
 }
 
 .sig:hover .hash {
-    display: inline;
+  display: inline;
 }
 
 .badges {
-    padding-top: 25px;
+  padding-top: 25px;
 }
 
 .sage {
-    padding-top: 1em;
+  padding-top: 1em;
+}
+
+.sagecell .CodeMirror-scroll {
+  min-height: unset !important;
+  max-height: unset !important;
 }
