@@ -2,12 +2,15 @@ from common_functions import gcd, mod_exp
 import random
 
 def brute_force_factorization(n: int) -> list[int]:
-    factors = []
+    factors = {}
     divisor = 2
 
     while n > 1:
         while n % divisor == 0:
-            factors.append(divisor)
+            if divisor not in factors:
+                factors[divisor] = 1
+            else:
+                factors[divisor] += 1
             n //= divisor
         divisor += 1
     
