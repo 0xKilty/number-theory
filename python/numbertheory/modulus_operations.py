@@ -1,4 +1,4 @@
-from common_functions import extended_euclidean
+from common_functions import extended_euclidean, mod_exp
 
 
 def mod_inverse(a: int, m: int) -> int:
@@ -17,3 +17,13 @@ def chinese_remainder_theorem(moduli: list[int], remainders: list[int]) -> list[
         p = prod // n_i
         sum += a_i * mod_inverse(p, n_i) * p
     return sum % prod
+
+def order_of_number(a: int, m: int) -> int:
+    for i in range(1, m):
+        if mod_exp(a, i, m) == 1:
+            return i
+    return m - 1
+
+a = 3
+modulus = 7
+print("Order of", a, "modulo", modulus, "is:", order_of_number(a, modulus))

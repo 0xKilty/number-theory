@@ -8,6 +8,11 @@ def lcm(a: int, b: int) -> int:
     return abs(a * b) // gcd(a, b)
 
 
+def legendre_symbol(a: int, p: int) -> int:
+    ls = mod_exp(a, (p - 1) // 2, p)
+    return -1 if ls == p - 1 else ls
+
+
 def extended_euclidean(a: int, b: int) -> tuple[int, int, int]:
     x_prev, x, y_prev, y = 0, 1, 1, 0
     while b != 0:
