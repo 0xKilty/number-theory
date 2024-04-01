@@ -1,6 +1,7 @@
 setup.py
 numbertheory/__init__.py
 numbertheory/common_functions.py
+numbertheory/elliptic_curves.py
 numbertheory/fibonacci.py
 numbertheory/generating_primes.py
 numbertheory/integer_factorization.py

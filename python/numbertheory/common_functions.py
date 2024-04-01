@@ -1,3 +1,5 @@
+from generating_primes import sieve_of_eratosthenes
+
 def gcd(a: int, b: int) -> int:
     while b != 0:
         a, b = b, a % b
@@ -60,3 +62,12 @@ def mod_exp(a: int, b: int, m: int) -> int:
         b >>= 1
         a = (a * a) % m
     return res
+
+
+def is_n_smooth(n: int, b: int) -> bool:
+    primes = sieve_of_eratosthenes(b)
+    for prime in primes:
+        while n % prime == 0:
+            n //= prime
+    
+    return n == 1
