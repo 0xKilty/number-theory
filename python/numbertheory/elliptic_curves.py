@@ -1,6 +1,6 @@
 from modulus_operations import mod_exp
 
-def point_addition(P, Q, a, b):
+def point_addition(P: tuple[int, int], Q: tuple[int, int], a: int, b: int) -> tuple[int, int]:
     if P is None: return Q
     if Q is None: return P
 
@@ -20,7 +20,7 @@ def point_addition(P, Q, a, b):
 
     return (x3, y3)
 
-def point_multiplication(P, k, a, b):
+def point_multiplication(P: tuple[int, int], k: int, a: int, b: int) -> tuple[int, int]:
     Q = None
     R = P
 
