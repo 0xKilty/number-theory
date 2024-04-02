@@ -1,13 +1,27 @@
 <h3>Elliptic Curves</h3>
-<h4 id="gcd">Point Addition</h4>
+<h4 id="point_addition">Point Addition</h4>
 <h3>
     <code>
-        <a href="{{ gcd }}" target="_blank">
-            gcd(a: int, b: int) -> int
+        <a href="{{ point_addition }}" target="_blank">
+            point_addition(P: tuple[int, int], Q: tuple[int, int], a: int, b: int) -> tuple[int, int]
         </a>
     </code>
 </h3>
-<p>Uses the <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="_blank">Euclidean algorithm</a> to
-    calculate the greatest common divisor between two numbers.</p> 
-<p>\( x = \gcd(a, b) \)</p>
+<p>
+    This function takes in \( P \) and \( Q \) as points and integers \( a \) and \( b \) as variables
+    to the following equation.
+</p>
+<p>
+    \(
+        y^2=x^3+ax+b
+    \)
+</p> 
+<p>
+    Which is called <a href="https://en.wikipedia.org/wiki/Elliptic_curve" target="_blank">Weierstrass normal form</a>.
+    \( P \) and \( Q \) are then the movable points on the graph below with the result being the blue point on the curve
+    which is the addition between \( P \) and \( Q \) on the curve defined by \( a \) and \( b \).
+</p>
+<div style="margin: auto; width: 60%;">
+<iframe src="https://www.desmos.com/calculator/zqojomjovw?embed" width="100%" height="400" style="border: 1px solid #ccc" frameborder=0></iframe>
+</div>
 <br>
