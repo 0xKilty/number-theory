@@ -23,7 +23,3 @@ def order_of_number(a: int, m: int) -> int:
         if mod_exp(a, i, m) == 1:
             return i
     return m - 1
-
-a = 3
-modulus = 7
-print("Order of", a, "modulo", modulus, "is:", order_of_number(a, modulus))

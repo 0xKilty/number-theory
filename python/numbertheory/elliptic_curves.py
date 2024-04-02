@@ -1,28 +1,33 @@
 from modulus_operations import mod_exp
 
-def point_addition(p, q, a, p_mod):
-    if p is None:
-        return q
-    elif q is None:
-        return p
-    elif p[0] == q[0] and (p[1] + q[1]) % p_mod == 0:
-        return None
-    else:
-        if p != q:
-            s = ((q[1] - p[1]) * pow(q[0] - p[0], -1, p_mod)) % p_mod
-        else:
-            s = ((3 * pow(p[0], 2) + a) * pow(2 * p[1], -1, p_mod)) % p_mod
-        x_r = (pow(s, 2) - p[0] - q[0]) % p_mod
-        y_r = (s * (p[0] - x_r) - p[1]) % p_mod
-        return x_r, y_r
+def point_addition(P, Q, a, b):
+    if P is None: return Q
+    if Q is None: return P
 
-def point_doubling(p, a, p_mod):
-    if p is None:
+    x1, y1 = P
+    x2, y2 = Q
+
+    if x1 == x2 and y1 == -y2:
         return None
-    elif p[1] == 0:
-        return None
+
+    if x1 == x2 and y1 == y2:
+        m = (3 * x1 ** 2 + a) / (2 * y1)
     else:
-        s = ((3 * pow(p[0], 2) + a) * pow(2 * p[1], -1, p_mod)) % p_mod
-        x_r = (pow(s, 2) - 2 * p[0]) % p_mod
-        y_r = (s * (p[0] - x_r) - p[1]) % p_mod
-        return x_r, y_r
+        m = (y2 - y1) / (x2 - x1)
+
+    x3 = m ** 2 - x1 - x2
+    y3 = m * (x1 - x3) - y1
+
+    return (x3, y3)
+
+def point_multiplication(P, k, a, b):
+    Q = None
+    R = P
+
+    while k > 0:
+        if k % 2 == 1:
+            Q = point_addition(Q, R, a, b)
+        R = point_addition(R, R, a, b)
+        k //= 2
+
+    return Q
