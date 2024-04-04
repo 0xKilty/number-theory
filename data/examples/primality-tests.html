@@ -20,9 +20,9 @@ print("Execution time:", execution_time)
 
 <p>
     <a href="{{ is_prime_fermat }}" target="_blank">is_prime_fermat</a> 
-    determines whether a given integer n is a prime 
+    determines whether a given integer \( n \) is a prime 
     number using Fermat's primality test. It iterates through a specified number 
-    of iterations, each time randomly selecting a base a between 2 and n - 1. For 
+    of iterations, each time randomly selecting a base a between 2 and \( n - 1 \). For 
     each iteration, it checks if \( a^n \mod n \) is equal to \( a \). If any of 
     these checks fail, the function immediately returns False, indicating that n 
     is composite. If all iterations pass, the function returns True, indicating 
@@ -44,9 +44,9 @@ print("Execution time:", execution_time)
 
 <p>
     <a href="{{ is_prime_rabin_miller }}" target="_blank">is_prime_rabin_miller</a> 
-    probabilistically tests whether a given integer `n` is prime.
-    It performs `k` iterations, each time randomly selecting a base `a` and checking whether `n`
-    passes the Miller-Rabin primality test with that base. The more iterations performed (i.e., higher `k`),
+    probabilistically tests whether a given integer \( n \) is prime.
+    It performs \( k \) iterations, each time randomly selecting a base \( a \) and checking whether \( n \)
+    passes the Miller-Rabin primality test with that base. The more iterations performed (i.e., higher \( k \)),
     the more accurate the primality test becomes.
 </p>
 <div class="sage">
