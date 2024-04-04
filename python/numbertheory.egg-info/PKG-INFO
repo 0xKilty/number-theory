@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: numbertheory
-Version: 0.0.3
+Version: 0.0.4
 Summary: Common number theoretic functions.
 Home-page: https://0xkilty.github.io/number-theory/
 Author: 0xKilty
@@ -26,8 +26,9 @@ Provides-Extra: dev
 [Github](https://github.com/0xKilty/number-theory)
 [Docs](https://0xkilty.github.io/number-theory/)
 
-This is a collection of mathematical functions in number theory in different programming languages. Number theory and computer science go hand in hand and the purpose of this project is to bridge the gap between programming and mathematics.
+number-theory is an opensource Python library designed to provide a comprehensive suite of tools for exploring and analyzing number theory concepts. Developed with simplicity, efficiency, and extensibility in mind. This project is avalible in python though pip modules and can be viewed on PyPi.
 
+Featuring a wide range of functions and algorithms, number-theory offers solutions to various problems in number theory, including prime numbers, factorization, modular arithmetic, Diophantine equations, and more. Whether you're a beginner seeking to understand fundamental concepts or a seasoned mathematician tackling complex problems, number-theory provides the essential tools to support your exploration and research. 
 ## Usage
 `numbertheory` is avalible as a python package and can be installed with `pip`. 
 ```bash
@@ -41,5 +42,4 @@ import numbertheory
 ```
 
 ## Contribute
-To learn how to contribute to open source projects please visit [opensource.guide](https://opensource.guide/how-to-contribute/).
-To learn more about git version control, github provides a [git guide](https://github.com/git-guides). 
+number-theory is open source which means that anyone can contribute to the project. The project uses git at the version control system and is hosted on Github. There are many ways to contribute to the project such as, adding a new function related to number theory, fixing or adding documentation, and adding test cases. To learn more about [git](https://en.wikipedia.org/wiki/Git) and the specifics of how to contribute to open source projects, please vist [opensource.guide](https://opensource.guide/how-to-contribute/). 

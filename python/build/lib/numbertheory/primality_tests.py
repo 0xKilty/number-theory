@@ -1,5 +1,5 @@
 import random
-from .modulus_operations import mod_exp
+from common_functions import mod_exp
 
 def is_prime_brute_force(n: int) -> bool:
     if n <= 1:
@@ -17,7 +17,7 @@ def is_prime_brute_force(n: int) -> bool:
     return True
 
 
-def is_prime_fermat(n: int, iterations: int = 5):
+def is_prime_fermat(n: int, iterations: int = 5) -> bool:
     if n <= 1:
         return False
     if n <= 3:
@@ -30,7 +30,7 @@ def is_prime_fermat(n: int, iterations: int = 5):
     return True
 
 
-def is_prime_rabin_miller(n: int, k: int = 5):
+def is_prime_rabin_miller(n: int, k: int = 5) -> bool:
     if n <= 1:
         return False
     if n <= 3:

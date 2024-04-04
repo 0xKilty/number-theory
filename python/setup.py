@@ -5,7 +5,7 @@ with open('../README.md', 'r') as readme:
     
 setup(
     name='numbertheory',
-    version='0.0.3',
+    version='0.0.4',
     description='Common number theoretic functions.',
     long_description_content_type='text/markdown',
     long_description=long_descripton,
