@@ -51,12 +51,66 @@
 </p> 
 <p>
     Which is called <a href="https://en.wikipedia.org/wiki/Elliptic_curve" target="_blank">Weierstrass normal form</a>.
-    \( P \) and \( Q \) are then the movable points on the graph below with the result being the blue point on the curve
+    \( P \) and \( Q \) are then the movable points on the graph below with the result being the green point on the curve
     which is the addition between \( P \) and \( Q \) on the curve defined by \( a \) and \( b \).
 </p>
 <div style="margin: auto; width: 60%;">
 <iframe src="https://www.desmos.com/calculator/f1k65zesd4?embed" width="100%" height="400" style="border: 1px solid #ccc" frameborder=0></iframe>
 </div>
+<br>
+
+<h4 id="point_multiplication">Point Multiplication</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/elliptic_curves.py#L23" target="_blank">
+            point_multiplication(P: tuple[int, int], k: int, a: int, b: int) -> tuple[float, float]
+        </a>
+    </code>
+</h3>
+<p>
+    \( P \) is a point on the curve defined by \( a \) and \( b \) as variables in the equation \( y^2=x^3+ax+b \).
+    The scalar defined by \( k \) is applied to \( P \) using the 
+    <a href="https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add" target="_blank">double-and-add</a> method.
+    For the double-and-add method, \( Q \) is also defined to be a point at infinity.
+    The algorithm is defined as if the integer \( k \) is even, add \( P \) to itself, then divide \( k \) by 2, and if
+    \( k \) is odd, then add \( P \) to \( Q \). Once \( k \) reaches 0, then the algorithm terminates.
+</p>
+<br>
+
+<h4 id="point_addition_mod">Point Addition Mod</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/elliptic_curves.py#L35" target="_blank">
+            point_addition_mod(P: tuple[int, int], Q: tuple[int, int], a: int, b: int, mod: int) -> tuple[int, int]
+        </a>
+    </code>
+</h3>
+<p>
+   \( P \) and \( Q \) are unique points on the curve defined by the variables \( a \) and \( b \) in the equation \( y^2=x^3+ax+b \)
+   which is called <a href="https://en.wikipedia.org/wiki/Elliptic_curve" target="_blank">Weierstrass normal form</a>.
+   \( mod \) is then the modulus that the computation takes place in to in the finite field \( \mathbb{F}_{mod} \).
+</p>
+<br>
+
+<h4 id="point_multiplication_mod">Point Multiplication Mod</h4>
+<h3>
+    <code>
+        <a href="https://github.com/0xKilty/number-theory/blob/main/python/numbertheory/elliptic_curves.py#L57" target="_blank">
+            point_multiplication_mod(P: tuple[int, int], k: int, a: int, b: int, mod: int) -> tuple[int, int]
+        </a>
+    </code>
+</h3>
+<p>
+   \( P \) a point on the curve defined by the variables \( a \) and \( b \) in the equation \( y^2=x^3+ax+b \)
+   which is called <a href="https://en.wikipedia.org/wiki/Elliptic_curve" target="_blank">Weierstrass normal form</a>.
+   \( mod \) is then the modulus that the computation takes place in to in the finite field \( \mathbb{F}_{mod} \).
+   The scalar defined by \( k \) is applied to \( P \) using the 
+    <a href="https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Double-and-add" target="_blank">double-and-add</a> method.
+    For the double-and-add method, \( Q \) is also defined to be a point at infinity.
+    The algorithm is defined as if the integer \( k \) is even, add \( P \) to itself, then divide \( k \) by 2, and if
+    \( k \) is odd, then add \( P \) to \( Q \). Once \( k \) reaches 0, then the algorithm terminates. All of the computation takes
+    place \( \mod mod \) to ensure that the results stay in the finite field \( \mathbb{F}_{mod} \).
+</p>
 <br>
     <div style="margin-bottom: 100px;"></div>
 </body>
