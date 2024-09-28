@@ -5,6 +5,8 @@
 ![PyPI - License](https://img.shields.io/pypi/l/numbertheory)
 ![GitHub License](https://img.shields.io/github/license/0xKilty/number-theory)
 
+## Open for [Hacktoberfest!!!](https://hacktoberfest.com)
+
 [PyPi](https://pypi.org/project/numbertheory/)
 [Github](https://github.com/0xKilty/number-theory)
 [Docs](https://0xkilty.github.io/number-theory/)
